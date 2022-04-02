@@ -2,19 +2,23 @@
 A JavaScript Repeater Field Library (Similar to the Repeater Field in ACF for WordPress)
 
 # Getting Started
-
-The first step is to create a container for the Repeater Field and include the script in your project
+The first step is to create a container element where the Repeater Field contents are going to be placed.
 
 ```html
 <div id="repeater-field-container"></div>
-<script src="repeater-field.min.js"></script>
 ```
 
-Then we create a new instance of the Repeater Field
+Then we include the library script in our project and instantiate the RepeaterField object.
 
-```javascript
+```html
+<script src="repeater-field.min.js"></script>
+
+<script>
 const container = document.getElementById("repeater-field-container");
+
 const repeaterField = new RepeaterField(container, {
   // Parameters here
 });
+</script>
 ```
+
