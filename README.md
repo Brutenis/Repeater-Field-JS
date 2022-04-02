@@ -45,7 +45,7 @@ The returned data will look similar to this:
 
 
 # Customization
-The RepeaterField constructor accepts parameters that let you change element values, define field types, add more elements to rows, wrap fields in divs, etc.
+The RepeaterField constructor accepts parameters that let you predefine data, change element values, define field types, add more elements to rows, wrap fields in divs, etc.
 
 Here is a example of the parameter object:
 
