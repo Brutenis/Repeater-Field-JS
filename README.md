@@ -34,6 +34,16 @@ Finally, we call the getData() method from our RepeaterField instance whenever w
 repeaterField.getData();
 ```
 
+The returned data will look similar to this:
+
+```javascript
+[
+  ["Field 1 Value", "Field 2 Value", "Field 3 Value"],  // Input row 1
+  ["Field 1 Value", "Field 2 Value", "Field 3 Value"]   // Input row 2
+]
+```
+
+
 # Customization
 The RepeaterField constructor accepts parameters that let you change element values, define field types, add more elements to rows, wrap fields in divs, etc.
 
