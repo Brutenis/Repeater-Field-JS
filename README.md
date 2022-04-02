@@ -58,7 +58,7 @@ Here is a example of the parameter object:
     },
 
     // Input field settings below
-    // To add an additional field, just create an object within the inputs array
+    // To add an additional field, just add another object within the inputs array
     // Give the object additional parameters for customization (optional)
     
     // Available input types: text, textarea, number, url, time, tel, range, password, month, email, datetime-local, date, color
