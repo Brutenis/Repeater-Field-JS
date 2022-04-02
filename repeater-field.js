@@ -1,3 +1,10 @@
+/*
+ * Repeater Field JS v1.0
+ *
+ * Author: Brutenis Jusaitis
+ * Github rep: https://github.com/Brutenis/Repeater-Field-JS
+ */
+
 function RepeaterField(el, params) {
   if (params) {
     this.params = params;
