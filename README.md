@@ -3,6 +3,8 @@ A JavaScript Repeater Field Library (Similar to the Repeater Field in ACF for Wo
 
 Comes unstyled, apply your own classes and styles. The minified version is just 5kb!
 
+[Live Example 1](https://codepen.io/Brutenis/pen/GRyOxKx)
+
 # Getting Started
 The first step is to create a container element where the Repeater Field contents are going to be placed. Example:
 
