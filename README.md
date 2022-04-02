@@ -35,5 +35,86 @@ The RepeaterField constructor accepts parameters that let you change element val
 Here is a example of the parameter object:
 
 ```javascript
+{
+  data: [
+    ["John", "John is a musician", "32"],
+    ["Juliette", "Juliette is a scientist", "23"]
+  ],
 
+  fields: {
+    wrapper: {
+      element: "div",
+      classList: ["repeater-field-wrapper"]
+    },
+
+    row: {
+      element: "div",
+      classList: ["repeater-input-row"]
+    },
+
+    inputs: [
+      {
+        classList: ["repeater-name"],
+        type: "text",
+        name: "repeater-name",
+        placeholder: "Name...",
+        wrapper: {
+          element: "div",
+          classList: [
+            "repeater-input-wrapper",
+            "repeater-name"
+          ]
+        }
+      },
+  
+      {
+        classList: ["repeater-description"],
+        type: "textarea",
+        name: "repeater-description",
+        placeholder: "Description...",
+        wrapper: {
+          element: "div",
+          classList: [
+            "repeater-input-wrapper",
+            "repeater-description"
+          ]
+        }
+      },
+
+      {
+        classList: ["repeater-number"],
+        type: "number",
+        name: "repeater-age",
+        placeholder: "Age...",
+        wrapper: {
+          element: "div",
+          classList: [
+            "repeater-input-wrapper",
+            "repeater-age"
+          ]
+        }
+      }
+    ]
+  },
+
+  deleteButton: {
+    value: "Delete",
+    classList: ["repeater-delete-button"],
+    name: "repeater-delete-button",
+    wrapper: {
+      element: "div",
+      classList: ["repeater-delete-wrapper"]
+    }
+  },
+
+  addButton: {
+    value: "Add",
+    classList: ["repeater-add-button"],
+    name: "repeater-add-button",
+    wrapper: {
+      element: "div",
+      classList: ["repeater-add-wrapper"]
+    }
+  }
+}
 ```
