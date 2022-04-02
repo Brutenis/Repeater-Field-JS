@@ -56,7 +56,7 @@ Here is a example of the parameter object:
       classList: ["repeater-input-row"]
     },
 
-    // Input field settings
+    // Input field settings below
     // To add an additional field, just create an object within the inputs array
     // Give the object additional parameters for customization (optional)
     
