@@ -36,22 +36,31 @@ Here is a example of the parameter object:
 
 ```javascript
 {
+  // The data array allows you to build input rows from pre-defined data (useful when the data is being retrieved from the database)
+  // Each array within the parent data array represents an input row where input values are represented by strings
   data: [
     ["John", "John is a musician", "32"],
     ["Juliette", "Juliette is a scientist", "23"]
   ],
 
   fields: {
+    // The wrapper element where input rows are going to be stored
     wrapper: {
       element: "div",
       classList: ["repeater-field-wrapper"]
     },
 
+    // The elements wrapping all of the input fields
     row: {
       element: "div",
       classList: ["repeater-input-row"]
     },
 
+    // Input field settings
+    // To add an additional field, just create an object within the inputs array
+    // Give the object additional parameters for customization (optional)
+    
+    // Available input types: text, textarea, number, url, time, tel, range, password, month, email, datetime-local, date, color
     inputs: [
       {
         classList: ["repeater-name"],
