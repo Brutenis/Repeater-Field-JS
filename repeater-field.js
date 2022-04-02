@@ -59,13 +59,19 @@ function RepeaterField(el, params) {
   this.setDefault(this.params.addButton, "classList", ["repeater-add-button"]);
   this.setDefault(this.params.addButton, "name", "repeater-add-button");
 
-  if (this.params.data) {
-    this.data = this.params.data;
-  } else {
+  // Adds a row with some empty values to the data array
+  this.setDefaultData = () => {
     this.data = [[]];
     this.params.fields.inputs.forEach(input => {
       this.data[0].push("");
     })
+  }
+
+  // If data isn't defined, we add a row with some empty values to the data array
+  if (this.params.data) {
+    this.data = this.params.data;
+  } else {
+    this.setDefaultData();
   }
 
   // Data ID attributes
@@ -75,29 +81,71 @@ function RepeaterField(el, params) {
   this.addButtonId = `repeater-add-${this.id}`;
   this.inputId = `repeater-input-${this.id}`;
 
-  // The field data getter
+  // The field data getter (this method is used to retrieve the field data)
   this.getData = () => {
     return this.data;
   }
 
-  // Creates an <input> element
+  // Creates an <input> or <textarea> element
   this.createInputElement = (id, data) => {
     let element = new Object();
 
     if (data.type != "textarea") {
       element = document.createElement("input");
-      element.setAttribute("type", data.type);
-      element.setAttribute("name", data.name);
-      element.setAttribute("placeholder", data.placeholder);
+
+      if (data.type == "text" ||
+          data.type == "number" ||
+          data.type == "url" ||
+          data.type == "time" ||
+          data.type == "tel" ||
+          data.type == "range" ||
+          data.type == "password" ||
+          data.type == "month" ||
+          data.type == "email" ||
+          data.type == "datetime-local" ||
+          data.type == "date" ||
+          data.type == "color") {
+        
+        element.setAttribute("type", data.type); 
+      } else {
+        element.setAttribute("type", "text");
+      }
+
+      if (data.name) {
+        element.setAttribute("name", data.name);
+      } else {
+        element.setAttribute("name", "repeater-input");
+      }
+
+      if (data.placeholder) {
+        element.setAttribute("placeholder", data.placeholder);
+      } else {
+        element.setAttribute("placeholder", "Type here...");
+      }
+
     } else {
+
       element = document.createElement("textarea");
-      element.setAttribute("name", data.name);
-      element.setAttribute("placeholder", data.placeholder);
+
+      if (data.name) {
+        element.setAttribute("name", data.name);
+      } else {
+        element.setAttribute("name", "repeater-textarea");
+      }
+
+      if (data.placeholder) {
+        element.setAttribute("placeholder", data.placeholder);
+      } else {
+        element.setAttribute("placeholder", "Type here...");
+      }
+
     }
 
-    data.classList.forEach(className => {
-      element.classList.add(className);
-    })
+    if (data.classList && data.classList[0]) {
+      data.classList.forEach(className => {
+        element.classList.add(className);
+      })
+    }
 
     if (id) {
       element.setAttribute("data-id", id);
@@ -116,15 +164,21 @@ function RepeaterField(el, params) {
   this.createButton = (id, data) => {
     const button = document.createElement("button");
     button.innerText = data.value;
-    button.setAttribute("name", data.name);
-    button.setAttribute("data-id", id);
 
-    data.classList.forEach(className => {
-      button.classList.add(className);
-    })
+    if (data.name) {
+      button.setAttribute("name", data.name);
+    } else {
+      button.setAttribute("name", "repeater-button");
+    }
 
     if (id) {
       button.setAttribute("data-id", id);
+    }
+
+    if (data.classList && data.classList[0]) {
+      data.classList.forEach(className => {
+        button.classList.add(className);
+      })
     }
 
     if (data.wrapper) {
@@ -140,9 +194,11 @@ function RepeaterField(el, params) {
   this.createWrapper = (id, data) => {
     const wrapper = document.createElement(data.element);
 
-    data.classList.forEach(className => {
-      wrapper.classList.add(className);
-    })
+    if (data.classList && data.classList[0]) {
+      data.classList.forEach(className => {
+        wrapper.classList.add(className);
+      })
+    }
 
     if (id) {
       wrapper.setAttribute("data-id", id);
@@ -174,10 +230,7 @@ function RepeaterField(el, params) {
       this.data = newData;
     } else {
 
-      this.data = [[]];
-      this.params.fields.inputs.forEach(input => {
-        this.data[0].push("");
-      })
+      this.setDefaultData();
     }
   }
 
@@ -240,25 +293,19 @@ function RepeaterField(el, params) {
         this.data.splice(index, 1);
 
         if (this.data.length < 1) {
-          this.data = [[]];
-          this.params.fields.inputs.forEach(input => {
-            this.data[0].push("");
-          })
+          this.setDefaultData();
         }
 
         this.render();
       })
     })
 
-    if (addButton.nodeName != "INPUT" && addButton != "TEXTAREA") {
+    if (addButton.nodeName != "BUTTON") {
       addButton.firstChild.addEventListener("click", this.addNewRow);
     } else {
       addButton.addEventListener("click", this.addNewRow);
     }
   };
-
-  // Assigns this instance to the container element
-  el.repeaterField = this;
 
   // Initializes the repeater field
   this.render();
