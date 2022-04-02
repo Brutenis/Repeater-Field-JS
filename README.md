@@ -1,5 +1,6 @@
 # Repeater-Field-JS
-A JavaScript Repeater Field Library (Similar to the Repeater Field in ACF for WordPress). Comes unstyled, apply your own classes and styles!
+A JavaScript Repeater Field Library (Similar to the Repeater Field in ACF for WordPress).
+Comes unstyled, apply your own classes and styles. The minified version is just 5kb!
 
 # Getting Started
 The first step is to create a container element where the Repeater Field contents are going to be placed. Example:
