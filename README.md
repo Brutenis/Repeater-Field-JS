@@ -1,5 +1,5 @@
 # Repeater-Field-JS
-A JavaScript Repeater Field Library (Similar to the Repeater Field in ACF for WordPress)
+A JavaScript Repeater Field Library (Similar to the Repeater Field in ACF for WordPress). Comes unstyled, apply your own classes and styles!
 
 # Getting Started
 The first step is to create a container element where the Repeater Field contents are going to be placed. Example:
@@ -26,4 +26,13 @@ Finally, we call the getData() method from our RepeaterField instance whenever w
 
 ```javascript
 repeaterField.getData();
+```
+
+# Customization
+The RepeaterField constructor accepts parameters that let you change element values, define field types, add more elements to rows, wrap fields in divs, etc.
+
+Here is a example of the parameter object:
+
+```javascript
+
 ```
